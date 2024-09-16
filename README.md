@@ -8,21 +8,21 @@ O projeto consiste em uma API Rest respons√°vel por gerenciar o processo de ado√
 
 ## Diagrama de Classes
 
-# Semana 1
+## Semana 1
 
 Link do Trello Semana 1: https://trello.com/b/YNKdmSK9/alura-challenge-back-end-6-semana-1
 
 ### Atividades Realizadas
 
-# Semana 2
+## Semana 2
 
-Link do Trello Semana 2:
+Link do Trello Semana 2: https://trello.com/b/PmNyroNi/alura-challenge-back-end-6-semana-2
 
 ### Atividades Realizadas
 
-# Semana 3
+## Semana 3 e 4
 
-Link do Trello Semana 3:
+Link do Trello Semana 3 e 4: https://trello.com/b/Xfv0GPfa/alura-challenge-back-end-6-semana-3-e-4
 
 ### Atividades Realizadas
 

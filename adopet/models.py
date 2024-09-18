@@ -10,3 +10,6 @@ class Tutor(models.Model):
     about = models.TextField(blank=True)
     # picture = models.ImageField(null=True)
     # adoptions
+
+    def __str__(self) -> str:
+        return self.user.username

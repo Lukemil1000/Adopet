@@ -14,6 +14,12 @@ Link do Trello Semana 1: https://trello.com/b/YNKdmSK9/alura-challenge-back-end-
 
 ### Atividades Realizadas
 
+- Criar estrutura base do projeto
+- Modelo Tutor estendendo User
+- Tutor adicionado no Django admin
+- Método create customizado no serializer para criação do objeto aninhado
+- Método update customizado no serializer para atualização do objeto aninhado
+
 ## Semana 2
 
 Link do Trello Semana 2: https://trello.com/b/PmNyroNi/alura-challenge-back-end-6-semana-2

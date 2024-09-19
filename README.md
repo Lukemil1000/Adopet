@@ -19,6 +19,7 @@ Link do Trello Semana 1: https://trello.com/b/YNKdmSK9/alura-challenge-back-end-
 - Tutor adicionado no Django admin
 - Método create customizado no serializer para criação do objeto aninhado
 - Método update customizado no serializer para atualização do objeto aninhado
+- Adiciona sinal de post_delete para deletar User junto ao Tutor
 
 ## Semana 2
 

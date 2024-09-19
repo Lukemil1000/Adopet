@@ -23,11 +23,12 @@ class TutorSerializer(serializers.ModelSerializer):
         return tutor
     
     def update(self, instance, validated_data):
-        user_data = validated_data.pop("user")
-        instance.user.username = user_data.get("username", instance.user.username)
-        instance.user.password = user_data.get("password", instance.user.password)
-        instance.user.email = user_data.get("email", instance.user.email)
-        instance.user.save()
+        if "user" in validated_data.keys():
+            user_data = validated_data.pop("user")
+            instance.user.username = user_data.get("username", instance.user.username)
+            instance.user.password = user_data.get("password", instance.user.password)
+            instance.user.email = user_data.get("email", instance.user.email)
+            instance.user.save()
 
         instance.phone = validated_data.get("phone", instance.phone)
         instance.city = validated_data.get("city", instance.city)

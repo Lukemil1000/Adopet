@@ -8,6 +8,10 @@ class UserSerializer(UniqueFieldsMixin, serializers.ModelSerializer):
         model = User
         fields = ["username", "password", "email"]
 
+    def validate_username(self, username):
+        if not username.isalpha():
+            raise serializers.ValidationError('Username deve conter apenas letras')
+        return username
 
 class TutorSerializer(serializers.ModelSerializer):
     user = UserSerializer()
@@ -35,3 +39,13 @@ class TutorSerializer(serializers.ModelSerializer):
         instance.about = validated_data.get("about", instance.about)
         instance.save()
         return instance
+    
+    def validate_phone(self, phone):
+        if len(phone) != 11:
+            raise serializers.ValidationError('Phone  deve ter 11 dígitos')
+        return phone
+    
+    def validate_city(self, city):
+        if not city.isalpha():
+            raise serializers.ValidationError('City deve conter apenas letras')
+        return city

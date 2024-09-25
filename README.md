@@ -28,6 +28,8 @@ Link do Trello Semana 2: https://trello.com/b/PmNyroNi/alura-challenge-back-end-
 
 ### Atividades Realizadas
 
+- Criado modelo de Abrigo estendendo User
+
 ## Semana 3 e 4
 
 Link do Trello Semana 3 e 4: https://trello.com/b/Xfv0GPfa/alura-challenge-back-end-6-semana-3-e-4

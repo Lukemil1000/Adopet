@@ -13,3 +13,18 @@ class Tutor(models.Model):
 
     def __str__(self) -> str:
         return self.user.username
+    
+class Shelter(models.Model):
+    """Modelo de usuário para um abrigo"""
+
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    cnpj = models.CharField(null=False, unique=True, max_length=14)
+    name = models.CharField(null=False, max_length=50)
+    phone = models.CharField(blank=True, max_length=11)
+    adress = models.CharField(blank=True, max_length=50)
+    # picture = models.ImageField(null=True)
+    # pets
+    # adoptions
+
+    def __str__(self) -> str:
+        return self.user.username

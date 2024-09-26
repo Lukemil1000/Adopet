@@ -20,8 +20,9 @@ class Shelter(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     cnpj = models.CharField(null=False, unique=True, max_length=14)
     name = models.CharField(null=False, max_length=50)
-    phone = models.CharField(blank=True, max_length=11)
-    adress = models.CharField(blank=True, max_length=50)
+    phone = models.CharField(null=False, max_length=11)
+    adress = models.CharField(null=False, max_length=50)
+    about = models.TextField(blank=True)
     # picture = models.ImageField(null=True)
     # pets
     # adoptions

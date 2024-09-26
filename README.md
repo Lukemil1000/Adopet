@@ -20,6 +20,7 @@ Link do Trello Semana 1: https://trello.com/b/YNKdmSK9/alura-challenge-back-end-
 - Método create customizado no serializer para criação do objeto aninhado
 - Método update customizado no serializer para atualização do objeto aninhado
 - Adicionado sinal de post_delete para deletar User junto ao Tutor
+- Criado endpoint com operações de CRUD para Tutor
 - Adicionadas validações aos campos de Tutor
 
 ## Semana 2
@@ -29,6 +30,7 @@ Link do Trello Semana 2: https://trello.com/b/PmNyroNi/alura-challenge-back-end-
 ### Atividades Realizadas
 
 - Criado modelo de Abrigo estendendo User
+- Criado endpoint com operações de CRUD para Abrigo
 
 ## Semana 3 e 4
 

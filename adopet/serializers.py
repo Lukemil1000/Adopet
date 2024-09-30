@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from drf_writable_nested.mixins import UniqueFieldsMixin
-from adopet.models import Shelter, Tutor
+from adopet.models import Shelter, Tutor, Pet
 import re
 from pycpfcnpj import cnpj as cnpj_validator
 
@@ -94,3 +94,10 @@ class ShelterSerializer(serializers.ModelSerializer):
         if len(phone) != 11:
             raise serializers.ValidationError('Phone  deve ter 11 dígitos')
         return phone
+    
+class PetSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Pet
+        fields = ["id", "shelter", "name", "description", "adopted", "age"]
+        read_only_fields = ["adopted",]

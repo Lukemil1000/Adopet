@@ -2,6 +2,8 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 from drf_writable_nested.mixins import UniqueFieldsMixin
 from adopet.models import Shelter, Tutor
+import re
+from pycpfcnpj import cnpj as cnpj_validator
 
 class UserSerializer(UniqueFieldsMixin, serializers.ModelSerializer):
     class Meta:
@@ -77,3 +79,18 @@ class ShelterSerializer(serializers.ModelSerializer):
         instance.about = validated_data.get("about", instance.about)
         instance.save()
         return instance
+
+    def validate_cnpj(self, cnpj):
+        if not cnpj_validator.validate(cnpj):
+            raise serializers.ValidationError('CNPJ inválido')    
+        return cnpj
+    
+    def validate_name(self, name):
+        if bool(re.search(r"\d", name)):
+            raise serializers.ValidationError('Name não pode conter números')
+        return name
+    
+    def validate_phone(self, phone):
+        if len(phone) != 11:
+            raise serializers.ValidationError('Phone  deve ter 11 dígitos')
+        return phone

@@ -31,6 +31,8 @@ Link do Trello Semana 2: https://trello.com/b/PmNyroNi/alura-challenge-back-end-
 
 - Criado modelo de Abrigo estendendo User
 - Criado endpoint com operações de CRUD para Abrigo
+- Adicionadas validações aos campos de Abrigo
+- Modelo de Pet
 
 ## Semana 3 e 4
 

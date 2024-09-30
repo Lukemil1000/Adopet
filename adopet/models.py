@@ -29,3 +29,17 @@ class Shelter(models.Model):
 
     def __str__(self) -> str:
         return self.user.username
+    
+class Pet(models.Model):
+    """Modelo para um pet"""
+
+    shelter = models.ForeignKey(Shelter, on_delete=models.CASCADE)
+    name = models.CharField(null=False, max_length=50)
+    description = models.TextField(blank=True)
+    adopted = models.BooleanField(null=False, default=False)
+    age = models.CharField(null=False, max_length=50)
+    # picture = models.ImageField(null=True)
+    # adoptions
+
+    def __str__(self) -> str:
+        return self.name

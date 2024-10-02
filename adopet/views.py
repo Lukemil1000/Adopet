@@ -1,6 +1,6 @@
-from rest_framework import permissions, viewsets
-from adopet.models import Tutor, Shelter, Pet
-from adopet.serializers import TutorSerializer, ShelterSerializer, PetSerializer
+from rest_framework import permissions, viewsets, mixins
+from adopet.models import Tutor, Shelter, Pet, Adoption
+from adopet.serializers import TutorSerializer, ShelterSerializer, PetSerializer, AdoptionSerializer
 
 class TutorViewSet(viewsets.ModelViewSet):
     """Endpoint para o modelo de Tutor"""
@@ -19,3 +19,9 @@ class PetViewSet(viewsets.ModelViewSet):
 
     queryset = Pet.objects.filter(adopted=False)
     serializer_class = PetSerializer
+
+class AdoptionViewSet(viewsets.ModelViewSet):
+
+    queryset = Adoption.objects.all()
+    serializer_class = AdoptionSerializer
+    http_method_names = ["get", "post", "delete", "head", "options"]

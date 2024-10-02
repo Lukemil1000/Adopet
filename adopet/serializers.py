@@ -101,3 +101,8 @@ class PetSerializer(serializers.ModelSerializer):
         model = Pet
         fields = ["id", "shelter", "name", "description", "adopted", "age"]
         read_only_fields = ["adopted",]
+    
+    def validate_name(self, name):
+        if bool(re.search(r"\d", name)):
+            raise serializers.ValidationError('Name não pode conter números')
+        return name

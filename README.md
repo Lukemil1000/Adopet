@@ -35,6 +35,7 @@ Link do Trello Semana 2: https://trello.com/b/PmNyroNi/alura-challenge-back-end-
 - Modelo de Pet
 - Endpoints Pet
 - Adicionadas validações aos campos de Pet
+- Modelo de Adoção
 
 ## Semana 3 e 4
 

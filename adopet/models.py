@@ -33,7 +33,7 @@ class Shelter(models.Model):
 class Pet(models.Model):
     """Modelo para um pet"""
 
-    shelter = models.ForeignKey(Shelter, on_delete=models.CASCADE)
+    shelter = models.ForeignKey(Shelter, on_delete=models.CASCADE, null=False)
     name = models.CharField(null=False, max_length=50)
     description = models.TextField(blank=True)
     adopted = models.BooleanField(null=False, default=False)
@@ -43,3 +43,10 @@ class Pet(models.Model):
 
     def __str__(self) -> str:
         return self.name
+    
+class Adoption(models.Model):
+    "Modelo para adoção"
+
+    pet = models.OneToOneField(Pet, on_delete=models.CASCADE, null=False)
+    tutor = models.ForeignKey(Tutor, on_delete=models.CASCADE, null=False)
+    date = models.DateField(null=False)

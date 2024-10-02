@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from drf_writable_nested.mixins import UniqueFieldsMixin
-from adopet.models import Shelter, Tutor, Pet
+from adopet.models import Shelter, Tutor, Pet, Adoption
 import re
 from pycpfcnpj import cnpj as cnpj_validator
 
@@ -106,3 +106,9 @@ class PetSerializer(serializers.ModelSerializer):
         if bool(re.search(r"\d", name)):
             raise serializers.ValidationError('Name não pode conter números')
         return name
+    
+class AdoptionSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Adoption
+        fields = ["id", "pet", "tutor", "date"]

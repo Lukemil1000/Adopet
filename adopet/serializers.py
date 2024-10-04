@@ -9,6 +9,9 @@ class UserSerializer(UniqueFieldsMixin, serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ["username", "password", "email"]
+        extra_kwargs = {
+            'password': {'write_only': True},
+        }
 
     def validate_username(self, username):
         if not username.isalpha():

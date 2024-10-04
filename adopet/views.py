@@ -17,8 +17,9 @@ class ShelterViewSet(viewsets.ModelViewSet):
 class PetViewSet(viewsets.ModelViewSet):
     """Endpoint para o modelo de Pet"""
 
-    queryset = Pet.objects.filter(adopted=False)
+    queryset = Pet.objects.all()
     serializer_class = PetSerializer
+    filterset_fields = ['adopted', "shelter"]
 
 class AdoptionViewSet(viewsets.ModelViewSet):
 

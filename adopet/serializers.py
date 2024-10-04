@@ -27,7 +27,7 @@ class TutorSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         user_data = validated_data.pop("user")
-        user = User.objects.create(**user_data)
+        user = User.objects.create_user(**user_data)
         tutor = Tutor.objects.create(user=user, **validated_data)
         return tutor
     
@@ -35,7 +35,7 @@ class TutorSerializer(serializers.ModelSerializer):
         if "user" in validated_data.keys():
             user_data = validated_data.pop("user")
             instance.user.username = user_data.get("username", instance.user.username)
-            instance.user.password = user_data.get("password", instance.user.password)
+            instance.user.set_password(user_data.get("password", instance.user.password))
             instance.user.email = user_data.get("email", instance.user.email)
             instance.user.save()
 
@@ -51,8 +51,8 @@ class TutorSerializer(serializers.ModelSerializer):
         return phone
     
     def validate_city(self, city):
-        if not city.isalpha():
-            raise serializers.ValidationError('City deve conter apenas letras')
+        if bool(re.search(r"\d", city)):
+            raise serializers.ValidationError('City não pode conter números')
         return city
     
 class ShelterSerializer(serializers.ModelSerializer):
@@ -64,7 +64,7 @@ class ShelterSerializer(serializers.ModelSerializer):
     
     def create(self, validated_data):
         user_data = validated_data.pop("user")
-        user = User.objects.create(**user_data)
+        user = User.objects.create_user(**user_data)
         shelter = Shelter.objects.create(user=user, **validated_data)
         return shelter
     
@@ -72,7 +72,7 @@ class ShelterSerializer(serializers.ModelSerializer):
         if "user" in validated_data.keys():
             user_data = validated_data.pop("user")
             instance.user.username = user_data.get("username", instance.user.username)
-            instance.user.password = user_data.get("password", instance.user.password)
+            instance.user.set_password(user_data.get("password", instance.user.password))
             instance.user.email = user_data.get("email", instance.user.email)
             instance.user.save()
         instance.cnpj = validated_data.get("cnpj", instance.cnpj)

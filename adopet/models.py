@@ -8,35 +8,32 @@ USER_TYPE_CHOICES = (
 
 class Account(AbstractUser):
     user_type = models.CharField(max_length=20, choices=USER_TYPE_CHOICES)
-
-class Tutor(models.Model):
-    """Modelo de usuário para um tutor"""
-
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    phone = models.CharField(blank=True, max_length=11)
-    city = models.CharField(blank=True, max_length=50)
-    about = models.TextField(blank=True)
-    # picture = models.ImageField(null=True)
-    # adoptions
-
-    def __str__(self) -> str:
-        return self.user.username
-    
-class Shelter(models.Model):
-    """Modelo de usuário para um abrigo"""
-
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    cnpj = models.CharField(null=False, unique=True, max_length=14)
     name = models.CharField(null=False, max_length=50)
     phone = models.CharField(null=False, max_length=11)
     adress = models.CharField(null=False, max_length=50)
     about = models.TextField(blank=True)
     # picture = models.ImageField(null=True)
+
+class Tutor(models.Model):
+    """Modelo de usuário para um tutor"""
+
+    account = models.OneToOneField(Account, on_delete=models.CASCADE)
+    cpf = models.CharField(null=False, unique=True, max_length=11)
+    # adoptions
+
+    def __str__(self) -> str:
+        return self.account.name
+    
+class Shelter(models.Model):
+    """Modelo de usuário para um abrigo"""
+
+    account = models.OneToOneField(Account, on_delete=models.CASCADE)
+    cnpj = models.CharField(null=False, unique=True, max_length=14)
     # pets
     # adoptions
 
     def __str__(self) -> str:
-        return self.user.username
+        return self.account.name
     
 class Pet(models.Model):
     """Modelo para um pet"""

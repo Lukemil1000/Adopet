@@ -4,9 +4,9 @@ from adopet.models import Tutor, Shelter, Adoption
 
 @receiver(post_delete, sender=Tutor)
 @receiver(post_delete, sender=Shelter)
-def post_delete_user(sender, instance, *args, **kwargs):
-    if instance.user: 
-        instance.user.delete()
+def post_delete_account(sender, instance, *args, **kwargs):
+    if instance.account: 
+        instance.account.delete()
 
 @receiver(post_init, sender=Adoption)
 def post_init_change_pet_adopted(sender, instance, *args, **kwargs):

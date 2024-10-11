@@ -29,7 +29,7 @@ class TutorSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Tutor
-        fields = ["id", "cpf"]
+        fields = ["id", "cpf", 'account']
 
     def create(self, validated_data):
         account_data = validated_data.pop("account")
@@ -59,11 +59,11 @@ class TutorSerializer(serializers.ModelSerializer):
         return cpf
     
 class ShelterSerializer(serializers.ModelSerializer):
-    user = AccountSerializer()
+    account = AccountSerializer()
 
     class Meta:
         model = Shelter
-        fields = ["id", "cnpj"]
+        fields = ["id", "cnpj", 'account']
     
     def create(self, validated_data):
         account_data = validated_data.pop("account")

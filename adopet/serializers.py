@@ -33,7 +33,7 @@ class TutorSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         account_data = validated_data.pop("account")
-        account = Account.objects.create_user(**account_data)
+        account = Account.objects.create_user(user_type='tutor', **account_data)
         tutor = Tutor.objects.create(account=account, **validated_data)
         return tutor
     
@@ -67,7 +67,7 @@ class ShelterSerializer(serializers.ModelSerializer):
     
     def create(self, validated_data):
         account_data = validated_data.pop("account")
-        account = Account.objects.create_user(**account_data)
+        account = Account.objects.create_user(user_type='shelter', **account_data)
         shelter = Shelter.objects.create(account=account, **validated_data)
         return shelter
     

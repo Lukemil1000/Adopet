@@ -14,6 +14,11 @@ class Account(AbstractUser):
     about = models.TextField(blank=True)
     # picture = models.ImageField(null=True)
 
+    class Meta:
+
+        verbose_name = 'account'
+        verbose_name_plural = 'accounts'
+
 class Tutor(models.Model):
     """Modelo de usuário para um tutor"""
 

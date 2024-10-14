@@ -45,6 +45,9 @@ Link do Trello Semana 3 e 4: https://trello.com/b/Xfv0GPfa/alura-challenge-back-
 
 ### Atividades Realizadas
 
+- Novo modelo de usuário Account
+- Account configurado como modelo padrão de autenticação
+
 # Tecnologias utilizadas
 
 - Python

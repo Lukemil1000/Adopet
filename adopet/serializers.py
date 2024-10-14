@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from drf_writable_nested.mixins import UniqueFieldsMixin
 from adopet.models import Shelter, Tutor, Pet, Adoption, Account
+from django.contrib.auth import authenticate
 import re
 from pycpfcnpj import cnpj as cnpj_validator
 from pycpfcnpj import cpf as cpf_validator
@@ -109,3 +110,25 @@ class AdoptionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Adoption
         fields = ["id", "pet", "tutor", "date"]
+
+class LoginSerializer(serializers.Serializer):
+    """Serializer para autenticação dos usuários"""
+
+    username = serializers.CharField(label="Usuário", write_only=True)
+    password = serializers.CharField(label="Senha", write_only=True, style={"input_type": "password"}, trim_whitespace=False)
+
+    def validate(self, attrs):
+        username = attrs.get("username")
+        password = attrs.get("password")
+
+        if username and password:
+            user = authenticate(request=self.context.get("request"), username=username, password=password)
+
+            if not user:
+                raise serializers.ValidationError("Acesso negado: usuário ou senha incorreto", code='authorization')
+        else:
+            raise serializers.ValidationError("Ambos os campos de usuário e senha são obrigatórios", code='authorization')
+
+        attrs["user"] = user 
+        return attrs
+

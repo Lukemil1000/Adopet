@@ -1,6 +1,10 @@
 from rest_framework import permissions, viewsets, mixins
+from rest_framework import views
 from adopet.models import Tutor, Shelter, Pet, Adoption
-from adopet.serializers import TutorSerializer, ShelterSerializer, PetSerializer, AdoptionSerializer
+from adopet.serializers import TutorSerializer, ShelterSerializer, PetSerializer, AdoptionSerializer, LoginSerializer
+from django.contrib.auth import login, logout
+from rest_framework.response import Response
+from rest_framework import status
 
 class TutorViewSet(viewsets.ModelViewSet):
     """Endpoint para o modelo de Tutor"""
@@ -26,3 +30,12 @@ class AdoptionViewSet(viewsets.ModelViewSet):
     queryset = Adoption.objects.all()
     serializer_class = AdoptionSerializer
     http_method_names = ["get", "post", "delete", "head", "options"]
+
+class LoginView(views.APIView):
+
+    def post(self, request):
+        serializer = LoginSerializer(data=self.request.data, context={"request": self.request})
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data["user"]
+        login(request, user)
+        return Response(None, status=status.HTTP_202_ACCEPTED)

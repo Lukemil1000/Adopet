@@ -49,6 +49,7 @@ Link do Trello Semana 3 e 4: https://trello.com/b/Xfv0GPfa/alura-challenge-back-
 - Account configurado como modelo padrão de autenticação
 - Endpoint para login
 - Endpoint para logout
+- Documentação com Swagger
 
 # Tecnologias utilizadas
 

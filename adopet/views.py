@@ -32,6 +32,8 @@ class AdoptionViewSet(viewsets.ModelViewSet):
     http_method_names = ["get", "post", "delete", "head", "options"]
 
 class LoginView(views.APIView):
+    def get_serializer(self, *args, **kwargs):
+        return LoginSerializer(*args, **kwargs)
 
     def post(self, request):
         serializer = LoginSerializer(data=self.request.data, context={"request": self.request})

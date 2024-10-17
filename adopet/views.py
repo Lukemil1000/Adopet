@@ -39,3 +39,9 @@ class LoginView(views.APIView):
         user = serializer.validated_data["user"]
         login(request, user)
         return Response(None, status=status.HTTP_202_ACCEPTED)
+    
+class LogoutView(views.APIView):
+
+    def get(self, request):
+        logout(request)
+        return Response(None, status=status.HTTP_200_OK)

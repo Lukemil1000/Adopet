@@ -48,6 +48,7 @@ Link do Trello Semana 3 e 4: https://trello.com/b/Xfv0GPfa/alura-challenge-back-
 - Novo modelo de usuário Account
 - Account configurado como modelo padrão de autenticação
 - Endpoint para login
+- Endpoint para logout
 
 # Tecnologias utilizadas
 

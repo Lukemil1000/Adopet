@@ -2,6 +2,7 @@ from rest_framework import permissions, viewsets, mixins
 from rest_framework import views
 from adopet.models import Tutor, Shelter, Pet, Adoption
 from adopet.serializers import TutorSerializer, ShelterSerializer, PetSerializer, AdoptionSerializer, LoginSerializer
+from adopet.permissions import IsPetShelterPermission
 from django.contrib.auth import login, logout
 from rest_framework.response import Response
 from rest_framework import status
@@ -24,6 +25,7 @@ class PetViewSet(viewsets.ModelViewSet):
     queryset = Pet.objects.all()
     serializer_class = PetSerializer
     filterset_fields = ['adopted', "shelter"]
+    permission_classes = (IsPetShelterPermission,)
 
 class AdoptionViewSet(viewsets.ModelViewSet):
 

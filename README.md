@@ -50,6 +50,8 @@ Link do Trello Semana 3 e 4: https://trello.com/b/Xfv0GPfa/alura-challenge-back-
 - Endpoint para login
 - Endpoint para logout
 - Documentação com Swagger
+- Permissões
+- Permissão para Pet ser alterado apenas por seu Shelter
 
 # Tecnologias utilizadas
 

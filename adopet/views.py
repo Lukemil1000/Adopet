@@ -32,6 +32,9 @@ class AdoptionViewSet(viewsets.ModelViewSet):
     http_method_names = ["get", "post", "delete", "head", "options"]
 
 class LoginView(views.APIView):
+
+    permission_classes = (permissions.AllowAny,)
+
     def get_serializer(self, *args, **kwargs):
         return LoginSerializer(*args, **kwargs)
 
